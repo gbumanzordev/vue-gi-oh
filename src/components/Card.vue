@@ -6,7 +6,7 @@
       <p>{{ card.desc }}</p>
     </div>
     <div class='card-actions'>
-      <router-link :to='card.id'>View more</router-link>
+      <router-link :to="'/' + card.id">View more</router-link>
     </div>
   </div>
 </template>

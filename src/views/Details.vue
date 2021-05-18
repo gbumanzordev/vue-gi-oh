@@ -9,6 +9,7 @@
       <div class='detail'><b>Race: </b>{{ card.race || 'N/A' }}</div>
       <div class='detail'><b>Archetype: </b> {{ card.archetype || 'N/A' }}</div>
     </div>
+    <router-link to='/'>Go Back</router-link>
   </div>
 </template>
 
