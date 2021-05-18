@@ -5,7 +5,7 @@
       <img :src='card.images[0].image_url' alt=''>
       <p>{{ card.desc }}</p>
     </div>
-    <div class='card-actions'><a :href='card.id'>View more</a></div>
+    <div class='card-actions'><a :href="'/details/' + card.id">View more</a></div>
   </div>
 </template>
 
