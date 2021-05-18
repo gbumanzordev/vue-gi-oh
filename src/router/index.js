@@ -18,7 +18,7 @@ const routes = [
     component: () => import('../views/Contact'),
   },
   {
-    path: '/details/:id',
+    path: '/:id',
     component: () => import('../views/Details'),
   },
 ];
