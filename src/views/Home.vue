@@ -1,16 +1,17 @@
 <template>
-  <div class='home'>
-    <CardList :cards='cards' />
+  <div class="home">
+    <Filters />
+    <CardList :cards="cards" />
   </div>
 </template>
 
 <script>
-
 import CardList from '@/components/CardList';
+import Filters from '@/components/Filters';
 
 export default {
   name: 'Home',
-  components: { CardList },
+  components: { CardList, Filters },
   data() {
     return {
       allItems: [],
@@ -18,8 +19,10 @@ export default {
       offset: 65,
     };
   },
-  created: async function() {
-    const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php');
+  created: async function () {
+    const response = await fetch(
+      'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+    );
     const data = await response.json();
     this.allItems = data.data.map(({ name, desc, card_images, id }) => {
       return {
