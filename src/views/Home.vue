@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Filters />
+    <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
     <CardList :cards="cards" />
   </div>
 </template>
@@ -20,19 +20,39 @@ export default {
     };
   },
   created: async function () {
-    const response = await fetch(
-      'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-    );
-    const data = await response.json();
-    this.allItems = data.data.map(({ name, desc, card_images, id }) => {
-      return {
-        id,
-        name,
-        desc,
-        images: card_images,
-      };
-    });
-    this.cards = [...this.allItems.slice(0, this.offset)];
+    await this.getAllItems();
+  },
+  methods: {
+    getAllItems: async function () {
+      const response = await fetch(
+        'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+      );
+      const data = await response.json();
+      this.allItems = data.data.map(({ name, desc, card_images, id }) => {
+        return {
+          id,
+          name,
+          desc,
+          images: card_images,
+        };
+      });
+      this.cards = [...this.allItems.slice(0, this.offset)];
+    },
+    getFilters: async function ({ term, option }) {
+      const response = await fetch(
+        `https://db.ygoprodeck.com/api/v7/cardinfo.php?${option}=${term}`
+      );
+      const data = await response.json();
+      this.allItems = data.data.map(({ name, desc, card_images, id }) => {
+        return {
+          id,
+          name,
+          desc,
+          images: card_images,
+        };
+      });
+      this.cards = [...this.allItems.slice(0, this.offset)];
+    },
   },
 };
 </script>
