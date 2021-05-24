@@ -14,9 +14,7 @@ export default {
   components: { CardList, Filters },
   data() {
     return {
-      allItems: [],
       cards: [],
-      offset: 65,
     };
   },
   created: async function () {
@@ -28,7 +26,7 @@ export default {
         'https://db.ygoprodeck.com/api/v7/cardinfo.php'
       );
       const data = await response.json();
-      this.allItems = data.data.map(({ name, desc, card_images, id }) => {
+      this.cards = data.data.map(({ name, desc, card_images, id }) => {
         return {
           id,
           name,
@@ -36,14 +34,13 @@ export default {
           images: card_images,
         };
       });
-      this.cards = [...this.allItems.slice(0, this.offset)];
     },
     getFilters: async function ({ term, option }) {
       const response = await fetch(
         `https://db.ygoprodeck.com/api/v7/cardinfo.php?${option}=${term}`
       );
       const data = await response.json();
-      this.allItems = data.data.map(({ name, desc, card_images, id }) => {
+      this.cards = data.data.map(({ name, desc, card_images, id }) => {
         return {
           id,
           name,
@@ -51,7 +48,6 @@ export default {
           images: card_images,
         };
       });
-      this.cards = [...this.allItems.slice(0, this.offset)];
     },
   },
 };
