@@ -1,10 +1,12 @@
 <template>
   <nav>
     <div class="brand">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg"
-        alt=""
-      />
+      <router-link to="/">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg"
+          alt=""
+        />
+      </router-link>
     </div>
     <ul>
       <li>

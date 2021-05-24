@@ -1,5 +1,5 @@
 <template>
-  <div class="observer"></div>
+  <div class="observer">&nbsp;</div>
 </template>
 
 <script>
@@ -22,3 +22,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.observer {
+  width: 16px;
+  height: 16px;
+}
+</style>
