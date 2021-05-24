@@ -27,10 +27,13 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 
 .content {
   padding: 24px;
+  height: 100%;
 }
 
 #app {
