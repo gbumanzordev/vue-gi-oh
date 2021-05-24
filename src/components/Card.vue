@@ -1,14 +1,14 @@
 <template>
-  <div class='card'>
-    <div class='card-title'>{{ card.name }}</div>
-    <div class='card-content'>
-      <img :src='card.images[0].image_url_small' alt=''>
-      <p>{{ card.desc }}</p>
+    <div class="card">
+      <div class="card-title">{{ card.name }}</div>
+      <div class="card-content">
+        <img :src="card.images[0].image_url_small" alt="" />
+        <p>{{ card.desc }}</p>
+      </div>
+      <div class="card-actions">
+        <router-link :to="'/' + card.id">View more</router-link>
+      </div>
     </div>
-    <div class='card-actions'>
-      <router-link :to="'/' + card.id">View more</router-link>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -33,7 +33,8 @@ export default {
   white-space: nowrap;
 }
 
-.card-title, .card-actions {
+.card-title,
+.card-actions {
   padding: 16px;
 }
 
@@ -50,6 +51,6 @@ a {
 }
 
 img {
-  width: 100%
+  width: 100%;
 }
 </style>

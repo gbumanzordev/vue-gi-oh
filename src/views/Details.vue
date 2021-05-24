@@ -1,15 +1,15 @@
 <template>
-  <div class='wrapper' v-if='card'>
+  <div class="wrapper" v-if="card">
     <h1>Card Details</h1>
     <h3>{{ card.name }}</h3>
-    <img :src='card.card_images[0].image_url_small' alt=''>
+    <img :src="card.card_images[0].image_url_small" alt="" />
     <p>{{ card.desc }}</p>
-    <div class='info'>
-      <div class='detail'><b>Type: </b> {{ card.type || 'N/A' }}</div>
-      <div class='detail'><b>Race: </b>{{ card.race || 'N/A' }}</div>
-      <div class='detail'><b>Archetype: </b> {{ card.archetype || 'N/A' }}</div>
+    <div class="info">
+      <div class="detail"><b>Type: </b> {{ card.type || 'N/A' }}</div>
+      <div class="detail"><b>Race: </b>{{ card.race || 'N/A' }}</div>
+      <div class="detail"><b>Archetype: </b> {{ card.archetype || 'N/A' }}</div>
     </div>
-    <router-link to='/'>Go Back</router-link>
+    <router-link to="/">Go Back</router-link>
   </div>
 </template>
 
@@ -21,9 +21,9 @@ export default {
       card: null,
     };
   },
-  created: async function() {
+  created: async function () {
     const id = this.$route.params.id;
-    const resp = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?id=' + id);
+    const resp = await fetch(`${process.env.VUE_APP_API_URL}?id=` + id);
     const data = await resp.json();
     this.card = data.data[0];
   },
@@ -35,5 +35,10 @@ export default {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 48px;
+}
+
+a {
+  color: #b00000;
 }
 </style>

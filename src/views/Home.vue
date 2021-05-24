@@ -15,16 +15,16 @@ export default {
   data() {
     return {
       cards: [],
+      apiUrl: '',
     };
   },
   created: async function () {
+    this.apiUrl = process.env.VUE_APP_API_URL;
     await this.getAllItems();
   },
   methods: {
     getAllItems: async function () {
-      const response = await fetch(
-        'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-      );
+      const response = await fetch(this.apiUrl);
       const data = await response.json();
       this.cards = data.data.map(({ name, desc, card_images, id }) => {
         return {
@@ -36,9 +36,7 @@ export default {
       });
     },
     getFilters: async function ({ term, option }) {
-      const response = await fetch(
-        `https://db.ygoprodeck.com/api/v7/cardinfo.php?${option}=${term}`
-      );
+      const response = await fetch(`${this.apiUrl}?${option}=${term}`);
       const data = await response.json();
       this.cards = data.data.map(({ name, desc, card_images, id }) => {
         return {
@@ -52,3 +50,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.home {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+</style>
