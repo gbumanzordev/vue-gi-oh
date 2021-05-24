@@ -2,7 +2,7 @@
   <div class='card'>
     <div class='card-title'>{{ card.name }}</div>
     <div class='card-content'>
-      <img :src='card.images[0].image_url' alt=''>
+      <img :src='card.images[0].image_url_small' alt=''>
       <p>{{ card.desc }}</p>
     </div>
     <div class='card-actions'>
