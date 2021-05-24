@@ -55,15 +55,13 @@ export default {
 <style scoped>
 .filters {
   display: flex;
-}
-
-select {
-  padding: 8px;
+  flex-wrap: wrap;
 }
 
 select,
 input {
   outline: 0;
+  padding: 8px;
 }
 
 button {

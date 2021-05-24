@@ -38,8 +38,8 @@ export default {
           nextPage: 2,
           totalRecords: newValue.length,
         };
-        this.displayed = this.cards.slice(0, this.listSize);
-      }
+       }
+      this.displayed = this.cards.slice(0, this.listSize);
     },
   },
   mounted() {

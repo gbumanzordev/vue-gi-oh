@@ -1,14 +1,13 @@
 <template>
-  <div class='container'>
+  <div class="container">
     <Navbar />
-    <div class='content'>
+    <div class="content">
       <router-view />
     </div>
   </div>
 </template>
 
 <script>
-
 import Navbar from '@/components/Navbar';
 
 export default {
@@ -34,6 +33,16 @@ body {
 .content {
   padding: 24px;
   height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #app {

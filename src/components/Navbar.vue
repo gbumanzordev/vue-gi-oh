@@ -27,8 +27,16 @@ export default {
 </script>
 
 <style scoped>
+.brand {
+  margin-right: 32px;
+}
+
 img {
   width: 160px;
+}
+
+div + ul {
+  padding: 0;
 }
 
 nav {
@@ -36,6 +44,7 @@ nav {
   flex-direction: row;
   align-items: center;
   padding: 8px 24px;
+  flex-wrap: wrap;
 }
 
 ul {
