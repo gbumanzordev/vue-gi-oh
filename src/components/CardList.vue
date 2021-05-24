@@ -15,20 +15,32 @@ export default {
   props: {
     cards: Array,
   },
-  watch: {
-    cards: function (newValue, oldValue) {
-      this.page = 1;
-      if (newValue !== oldValue) {
-        this.displayed = this.cards.slice(0, this.listSize);
-      }
-    },
-  },
   data() {
     return {
       displayed: [],
       listSize: 50,
-      page: 1,
+      pagination: {
+        previousPage: 1,
+        currentPage: 1,
+        lastPage: 1,
+        nextPage: null,
+        totalRecords: 0,
+      },
     };
+  },
+  watch: {
+    cards: function (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        this.pagination = {
+          previousPage: 1,
+          currentPage: 1,
+          lastPage: Math.ceil(newValue.length / this.listSize),
+          nextPage: 2,
+          totalRecords: newValue.length,
+        };
+        this.displayed = this.cards.slice(0, this.listSize);
+      }
+    },
   },
   mounted() {
     if (this.cards.length) {
@@ -37,9 +49,12 @@ export default {
   },
   methods: {
     loadMore() {
-      if (this.cards.length - this.listSize * this.page >= this.listSize) {
-        this.page = this.page + 1;
-        this.displayed = [...this.cards.slice(0, this.listSize * this.page)];
+      const { currentPage, lastPage } = this.pagination;
+      if (currentPage < lastPage) {
+        this.pagination.currentPage = currentPage + 1;
+        this.displayed = [
+          ...this.cards.slice(0, this.listSize * this.pagination.currentPage),
+        ];
       }
     },
   },
