@@ -1,19 +1,20 @@
 <template>
   <nav>
-    <div class='brand'>
+    <div class="brand">
       <img
-        src='https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg'
-        alt=''>
+        src="https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg"
+        alt=""
+      />
     </div>
     <ul>
       <li>
-        <router-link to='/'>Home</router-link>
+        <router-link to="/">Home</router-link>
       </li>
       <li>
-        <router-link to='/about'>About</router-link>
+        <router-link to="/about">About</router-link>
       </li>
       <li>
-        <router-link to='/contact'>Contact</router-link>
+        <router-link to="/contact">Contact</router-link>
       </li>
     </ul>
   </nav>
@@ -26,7 +27,6 @@ export default {
 </script>
 
 <style scoped>
-
 img {
   width: 160px;
 }
@@ -45,9 +45,15 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
+  font-size: 20px;
 }
 
 li + li {
   margin-left: 16px;
+}
+
+a.router-link-exact-active {
+  font-weight: bold;
 }
 </style>
