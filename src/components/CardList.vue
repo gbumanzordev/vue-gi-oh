@@ -1,8 +1,8 @@
 <template>
   <div class="list">
     <Card v-for="card in displayed" :key="card.id" :card="card" />
-    <Observer @scrolled="loadMore" v-if="cards.length" />
   </div>
+  <Observer @scrolled="loadMore" v-if="cards.length" />
 </template>
 
 <script>
@@ -11,7 +11,7 @@ import Observer from '@/components/Observer';
 
 export default {
   name: 'CardList',
-  components: { Observer, Card },
+  components: { Card, Observer },
   props: {
     cards: Array,
   },
@@ -31,20 +31,15 @@ export default {
   watch: {
     cards: function (newValue, oldValue) {
       if (newValue !== oldValue) {
-        this.pagination = {
-          previousPage: 1,
-          currentPage: 1,
-          lastPage: Math.ceil(newValue.length / this.listSize),
-          nextPage: 2,
-          totalRecords: newValue.length,
-        };
-       }
+        this.buildPagination();
+      }
       this.displayed = this.cards.slice(0, this.listSize);
     },
   },
   mounted() {
     if (this.cards.length) {
       this.displayed = this.cards.slice(0, this.listSize);
+      this.buildPagination();
     }
   },
   methods: {
@@ -57,6 +52,15 @@ export default {
         ];
       }
     },
+    buildPagination() {
+      this.pagination = {
+        previousPage: 1,
+        currentPage: 1,
+        lastPage: Math.ceil(this.cards.length / this.listSize),
+        nextPage: 2,
+        totalRecords: this.cards.length,
+      };
+    },
   },
 };
 </script>
@@ -64,7 +68,7 @@ export default {
 <style scoped>
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 24px;
   margin-top: 24px;
 }

@@ -1,14 +1,12 @@
 <template>
+  <router-link :to="'/' + card.id">
     <div class="card">
-      <div class="card-title">{{ card.name }}</div>
-      <div class="card-content">
-        <img :src="card.images[0].image_url_small" alt="" />
-        <p>{{ card.desc }}</p>
-      </div>
-      <div class="card-actions">
-        <router-link :to="'/' + card.id">View more</router-link>
-      </div>
+      <h1>{{ card.name }}</h1>
+      <img :src="card.images[0].image_url_small" alt="" />
+      <p class="p-6">{{ card.desc }}</p>
+      <div class="p-3"></div>
     </div>
+  </router-link>
 </template>
 
 <script>
@@ -21,36 +19,25 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  border: solid 1px #ccc;
-  border-radius: 4px;
-}
-
-.card-title {
-  font-weight: 600;
-  text-overflow: ellipsis;
-  overflow: hidden;
+h1 {
   white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  @apply flex py-4 px-6 font-medium;
 }
 
-.card-title,
-.card-actions {
-  padding: 16px;
+.card {
+  @apply w-full mx-auto bg-white rounded-md shadow-md cursor-pointer hover:shadow-lg;
 }
 
-.card-content > p {
-  padding: 0 16px;
+img {
+  @apply m-0 ml-0 w-full;
+}
+
+p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  width: 100%;
 }
 </style>

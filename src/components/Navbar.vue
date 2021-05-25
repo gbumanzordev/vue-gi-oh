@@ -1,70 +1,49 @@
 <template>
-  <nav>
-    <div class="brand">
-      <router-link to="/">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg"
-          alt=""
-        />
-      </router-link>
-    </div>
+  <nav class="navbar">
+    <router-link to="/">
+      <h1>Vue-Gi-Oh!</h1>
+    </router-link>
     <ul>
-      <li>
-        <router-link to="/">Home</router-link>
-      </li>
-      <li>
-        <router-link to="/about">About</router-link>
-      </li>
-      <li>
-        <router-link to="/contact">Contact</router-link>
+      <li v-for="route in menu" :key="route.id">
+        <router-link :to="route.path">{{ route.title }}</router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import { mainMenu } from '@/utils/main-menu';
+
 export default {
   name: 'Navbar',
+  data() {
+    return { menu: mainMenu };
+  },
 };
 </script>
 
 <style scoped>
-.brand {
-  margin-right: 32px;
+.navbar {
+  @apply flex flex-wrap p-6 justify-between items-center sticky top-0 left-0 bg-white;
 }
 
-img {
-  width: 160px;
-}
-
-div + ul {
-  padding: 0;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 8px 24px;
-  flex-wrap: wrap;
+h1 {
+  @apply text-3xl font-black text-red-700;
 }
 
 ul {
-  list-style: none;
-  display: flex;
+  @apply flex mt-6 md:mt-0;
+}
+
+li {
+  @apply mr-6;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 20px;
-}
-
-li + li {
-  margin-left: 16px;
+  @apply hover:no-underline;
 }
 
 a.router-link-exact-active {
-  font-weight: bold;
+  @apply text-red-700;
 }
 </style>
