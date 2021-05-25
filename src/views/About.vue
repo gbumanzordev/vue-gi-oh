@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1 class="">About me</h1>
+    <h1 class="">About the Author</h1>
     <p>Hi there! 👋</p>
     <p>My name is Gerson Umanzor and I'm from El Salvador 💙.</p>
 

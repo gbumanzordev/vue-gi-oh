@@ -1,6 +1,6 @@
 <template>
+  <h1 class="text-2xl font-bold mb-6">Card List</h1>
   <div class="home" v-if="!loading">
-    <h1 class="text-2xl font-bold mb-6">Card List</h1>
     <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
     <CardList :cards="cards" />
   </div>
