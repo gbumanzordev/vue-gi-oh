@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Navbar />
-    <div class="content">
+    <div class="p-4 w-full h-full">
       <router-view />
     </div>
   </div>
@@ -21,28 +21,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-}
-
-.content {
-  padding: 24px;
-  height: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 #app {
