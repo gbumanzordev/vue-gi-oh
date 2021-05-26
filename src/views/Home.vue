@@ -27,34 +27,27 @@ export default {
     await this.getAllItems();
   },
   methods: {
-    getAllItems: async function () {
+    async getAllItems() {
       const response = await fetch(this.apiUrl);
-      const data = await response.json();
-      this.cards = data.data.map(({ name, desc, card_images, id }) => {
-        return {
-          id,
-          name,
-          desc,
-          images: card_images,
-        };
-      });
+      const { data } = await response.json();
+      this.cards = data.map(({ card_images: images, ...card }) => ({
+        ...card,
+        images,
+      }));
       this.loading = false;
     },
-    getFilters: async function ({ term, option }) {
+    async getFilters({ term, option }) {
       const response = await fetch(`${this.apiUrl}?${option}=${term}`);
-      const data = await response.json();
-      this.cards = data.data.map(({ name, desc, card_images, id }) => {
-        return {
-          id,
-          name,
-          desc,
-          images: card_images,
-        };
-      });
+      const { data } = await response.json();
+      this.cards = data.map(({ card_images: images, ...card }) => ({
+        ...card,
+        images,
+      }));
     },
   },
 };
 </script>
+
 <style scoped>
 .home {
   box-sizing: border-box;
