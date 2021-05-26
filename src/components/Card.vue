@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/' + card.id">
+  <router-link :to="`/${card.id}`">
     <div class="card">
       <h1>{{ card.name }}</h1>
       <img :src="card.images[0].image_url_small" alt="" />
@@ -13,7 +13,10 @@
 export default {
   name: 'Card',
   props: {
-    card: Object,
+    card: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>

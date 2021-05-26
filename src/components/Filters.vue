@@ -66,11 +66,6 @@ export default {
 </script>
 
 <style scoped>
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 select,
 input {
   outline: 0;
