@@ -1,28 +1,41 @@
 <template>
-  <h1>Card List</h1>
-  <p>Select a Filter:</p>
-  <div class="filters">
-    <select v-model="option">
-      <option value="">Select an option to filter from</option>
-      <option value="name">Name</option>
-      <option value="type">Type</option>
-      <option value="archetype">Archetype</option>
-      <option value="race">Race</option>
-    </select>
-    <input
-      type="text"
-      name=""
-      v-model="term"
-      placeholder="Enter your match here"
-    />
-    <button @click="filter" :disabled="term === '' || option === ''">
-      Apply Filter
-    </button>
-  </div>
-  <div>
-    <button class="clear" v-if="isFiltered" @click="clearFilters">
-      Clear Filters
-    </button>
+  <div class="bg-gray-100 p-8 rounded-md flex flex-col">
+    <p class="mb-4 font-bold">Select a Filter:</p>
+    <div class="flex flex-col md:flex-row">
+      <select
+        v-model="option"
+        class="form-select block border p-3 rounded w-full mb-4 md:mr-4 md:mb-0"
+      >
+        <option value="">Select an option to filter from</option>
+        <option value="name">Name</option>
+        <option value="type">Type</option>
+        <option value="archetype">Archetype</option>
+        <option value="race">Race</option>
+      </select>
+      <input
+        type="text"
+        name=""
+        v-model="term"
+        placeholder="Enter your match here"
+        class="py-3 px-4 bg-white rounded-lg placeholder-gray-400 text-gray-900 appearance-none inline-block shadow-md focus:outline-none w-full mb-4 md:mb-0"
+      />
+      <button
+        @click="filter"
+        class="bg-red-800 text-white px-3 py-2 rounded-md hover:bg-red-900 focus:outline-none md:ml-4 whitespace-nowrap"
+        :disabled="term === '' || option === ''"
+      >
+        Apply Filter
+      </button>
+    </div>
+    <div>
+      <button
+        class="bg-gray-600 text-white px-3 rounded-md hover:bg-gray-700 py-2 focus:outline-none mt-6"
+        v-if="isFiltered"
+        @click="clearFilters"
+      >
+        Clear Filter <i>({{ option }}: {{ term }})</i>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -64,31 +77,7 @@ input {
   padding: 8px;
 }
 
-button {
-  border: 0;
-  background-color: #e00000;
-  font-weight: bold;
-  color: #fff;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: all 0.5s;
-}
-
-button:hover {
-  background-color: #b00000;
-}
-
 button[disabled] {
   cursor: not-allowed;
-}
-
-.clear {
-  background-color: #ccc;
-  color: #000;
-  margin-top: 8px;
-}
-
-.clear:hover {
-  background-color: #ddd;
 }
 </style>

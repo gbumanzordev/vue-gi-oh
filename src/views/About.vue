@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>About me</h1>
+    <h1 class="">About the Author</h1>
     <p>Hi there! 👋</p>
     <p>My name is Gerson Umanzor and I'm from El Salvador 💙.</p>
 
@@ -21,17 +21,31 @@
       reach out in my social:
     </p>
 
-    <h1 class="about-the-app">About the App</h1>
-    <p>Content to be added once the app is finished</p>
+    <h1 class="mt-12">About the App</h1>
+    <p>
+      This is a small application to strengthen the knowledge I have about
+      Vue.js. It fetches the information from an API for Yu-Gi-Oh and it lists
+      it
+    </p>
+    <p>
+      The API sends back 11k records, but what it's being done here is
+      displaying only 50 records and creating an "infinite scroll" look and
+      feel, thus, while the user is scrolling down, more items will be added to
+      the view. This will allow the app to load faster and not getting stuck on
+      low resource devices.
+    </p>
+    <p>
+      It also allows filtering by name, type, archetype and race, you can try
+      that out to get the list filtered.
+    </p>
   </div>
 </template>
 <style scoped>
-p {
-  line-height: 1.8rem;
-  font-size: 18px;
+h1 {
+  @apply text-2xl font-bold mb-8;
 }
 
-.about-the-app {
-  margin-top: 64px;
+p {
+  @apply mb-2 leading-8 text-lg;
 }
 </style>
