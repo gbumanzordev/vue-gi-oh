@@ -40,6 +40,7 @@
     </p>
   </div>
 </template>
+
 <style scoped>
 h1 {
   @apply text-2xl font-bold mb-8;

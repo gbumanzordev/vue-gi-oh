@@ -22,6 +22,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .observer {
   width: 16px;
