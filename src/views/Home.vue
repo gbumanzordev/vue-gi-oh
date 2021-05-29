@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-2xl font-bold mb-6">Card List</h1>
+  <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
   <div class="home" v-if="!loading">
-    <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
     <CardList :cards="cards" />
   </div>
   <Loader v-else>Loading cards...</Loader>
@@ -37,12 +37,14 @@ export default {
       this.loading = false;
     },
     async getFilters({ term, option }) {
+      this.loading = true;
       const response = await fetch(`${this.apiUrl}?${option}=${term}`);
       const { data } = await response.json();
       this.cards = data.map(({ card_images: images, ...card }) => ({
         ...card,
         images,
       }));
+      this.loading = false;
     },
   },
 };

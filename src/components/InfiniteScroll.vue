@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Observer',
+  name: 'InfiniteScroll',
   emits: ['scrolled'],
   data() {
     return {

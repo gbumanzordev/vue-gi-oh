@@ -2,16 +2,16 @@
   <div class="list">
     <Card v-for="card in displayed" :key="card.id" :card="card" />
   </div>
-  <Observer @scrolled="loadMore" v-if="cards.length" />
+  <InfiniteScroll @scrolled="loadMore" v-if="cards.length" />
 </template>
 
 <script>
 import Card from '@/components/Card';
-import Observer from '@/components/Observer';
+import InfiniteScroll from '@/components/InfiniteScroll';
 
 export default {
   name: 'CardList',
-  components: { Card, Observer },
+  components: { Card, InfiniteScroll },
   props: {
     cards: Array,
   },
