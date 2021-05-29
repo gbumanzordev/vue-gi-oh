@@ -1,12 +1,12 @@
 <template>
-  <router-link :to="`/${card.id}`">
-    <div class="card">
-      <h1>{{ card.name }}</h1>
-      <img :src="card.images[0].image_url_small" alt="" />
-      <p class="p-6">{{ card.desc }}</p>
-      <div class="p-3"></div>
-    </div>
-  </router-link>
+    <router-link :to="`/${card.id}`">
+      <div class="card">
+        <h1>{{ card.name }}</h1>
+        <img :src="card.images[0].image_url_small" alt="" />
+        <p class="p-6">{{ card.desc }}</p>
+        <div class="p-3"></div>
+      </div>
+    </router-link>
 </template>
 
 <script>

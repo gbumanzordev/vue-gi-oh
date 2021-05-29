@@ -1,7 +1,7 @@
 <template>
-  <div class="list">
+  <transition-group tag="div" name='list' appear>
     <Card v-for="card in displayed" :key="card.id" :card="card" />
-  </div>
+  </transition-group>
   <InfiniteScroll @scrolled="loadMore" v-if="cards.length" />
 </template>
 
@@ -66,10 +66,25 @@ export default {
 </script>
 
 <style scoped>
-.list {
+div {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 24px;
   margin-top: 24px;
 }
+
+.list-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.list-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.list-enter-active {
+  transition: all 0.7s ease;
+}
+
 </style>
