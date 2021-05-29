@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 p-8 rounded-md flex flex-col">
+  <div class="bg-gray-100 p-8 rounded-md flex flex-col filter-wrapper">
     <p class="mb-4 font-bold">Select a Filter:</p>
     <div class="flex flex-col md:flex-row">
       <select
@@ -28,13 +28,15 @@
       </button>
     </div>
     <div>
-      <button
-        class="bg-gray-600 text-white px-3 rounded-md hover:bg-gray-700 py-2 focus:outline-none mt-6"
-        v-if="isFiltered"
-        @click="clearFilters"
+      <transition name="filter"
+        ><button
+          class="bg-gray-600 text-white px-3 rounded-md hover:bg-gray-700 py-2 focus:outline-none mt-6"
+          v-if="isFiltered"
+          @click="clearFilters"
+        >
+          Clear Filter <i>({{ option }}: {{ term }})</i>
+        </button></transition
       >
-        Clear Filter <i>({{ option }}: {{ term }})</i>
-      </button>
     </div>
   </div>
 </template>
@@ -74,5 +76,37 @@ input {
 
 button[disabled] {
   cursor: not-allowed;
+}
+
+.filter-enter-from {
+  opacity: 0.5;
+  transform: translateX(-20px);
+}
+
+.filter-enter-to {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.filter-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.filter-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.filter-enter-active {
+  transition: all 0.5s;
+}
+
+.filter-leave-active {
+  transition: all 0.5s;
+}
+
+.filter-wrapper {
+  transition: all 0.5s;
 }
 </style>

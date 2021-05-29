@@ -1,10 +1,12 @@
 <template>
-  <h1 class="text-2xl font-bold mb-6">Card List</h1>
-  <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
-  <div class="home" v-if="!loading">
-    <CardList :cards="cards" />
+  <div class="wrapper">
+    <h1 class="text-2xl font-bold mb-6">Card List</h1>
+    <Filters @filtered="getFilters" @filter-cleared="getAllItems" />
+    <div class="home" v-if="!loading">
+      <CardList :cards="cards" />
+    </div>
+    <Loader v-else>Loading cards...</Loader>
   </div>
-  <Loader v-else>Loading cards...</Loader>
 </template>
 
 <script>
