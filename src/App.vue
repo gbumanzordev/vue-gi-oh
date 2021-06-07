@@ -37,7 +37,6 @@ body {
 /* Route Transitions */
 .route-enter-from {
   opacity: 0;
-  transform: translateX(100px);
 }
 
 .route-enter-active {
@@ -46,7 +45,6 @@ body {
 
 .route-leave-to {
   opacity: 0;
-  transform: translateX(-100px);
 }
 
 .route-leave-active {
