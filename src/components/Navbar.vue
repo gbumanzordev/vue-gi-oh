@@ -31,6 +31,7 @@ h1 {
   @apply text-3xl font-black text-red-700;
 }
 
+
 ul {
   @apply flex mt-6 md:mt-0;
 }
