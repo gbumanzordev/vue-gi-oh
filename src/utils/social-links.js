@@ -14,9 +14,9 @@ export const socialLinks = [
     url: 'https://instagram.com/gbumanzordev',
     icon: 'fab fa-instagram',
   },
-  {
-    name: 'linkedin',
-    url: 'https://linkedin.com/in/bumanzor',
-    icon: 'fab fa-linkedin',
-  },
+  // {
+  //   name: 'linkedin',
+  //   url: 'https://linkedin.com/in/bumanzor',
+  //   icon: 'fab fa-linkedin',
+  // },
 ];
