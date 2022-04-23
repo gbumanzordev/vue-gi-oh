@@ -26,6 +26,7 @@ export default {
         nextPage: null,
         totalRecords: 0,
       },
+      loadingMore: false
     };
   },
   watch: {
@@ -45,12 +46,19 @@ export default {
   methods: {
     loadMore() {
       const { currentPage, lastPage } = this.pagination;
-      if (currentPage < lastPage) {
+      if (!this.loadingMore && currentPage < lastPage) {
+        this.loadingMore = true;
         this.pagination.currentPage = currentPage + 1;
-        this.displayed = [
-          ...this.cards.slice(0, this.listSize * this.pagination.currentPage),
-        ];
-      }
+        setTimeout(() => {
+          this.displayed = [
+            ...this.cards.slice(0, this.listSize * this.pagination.currentPage),
+          ];
+          
+          this.loadingMore = false;
+        }
+
+        
+        })
     },
     buildPagination() {
       this.pagination = {
